@@ -12,10 +12,13 @@
 ```
 
 ## repositoryをclone
-git clone git@github.com:ebarakazuhiro/docker-lumen.git
+git clone git@github.com:ebarakazuhiro/docker-django.git
 
 ## docker images作成
 docker-compose build
+
+## django project作成
+docker-compose run web django-admin.py startproject 任意のプロジェクト名 .
 
 ## docker 起動
 docker-compose up
@@ -56,8 +59,7 @@ docker-compose rm
 | ソリューション | バージョン |
 | --- | --- |
 | Docker | 17.03.1-ce |
-| PHP | 7.1.3
-| Lumen | 5.4 |
+| Python | 3.6
+| Django | 1.11 |
 | MySQL | 5.7.17 |
-| Redis | 3 |
 

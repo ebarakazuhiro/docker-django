@@ -7,6 +7,7 @@ services:
       - "8000"
     links:
       - database:database
+    command: gunicorn app.wsgi -b 0.0.0.0:8000
     volumes:
       - ./:/usr/src/app
       - ./static/:/usr/src/app/static
@@ -15,10 +16,15 @@ services:
     image: nginx:1.10.3
     build:
       context: ./nginx
-    volumes:
-      - "./nginx/:/etc/nginx/"
     ports:
       - "80:80"
+    volumes:
+      - "./nginx/:/etc/nginx/"
+      - /www/static
+    volumes_from:
+      - web
+    links:
+      - web:web
   database:
     image: mysql:5.7.17
     container_name: 'mysql'

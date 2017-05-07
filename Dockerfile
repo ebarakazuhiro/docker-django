@@ -19,8 +19,6 @@ ENV PYTHONUNBUFFERED 1
 RUN mkdir -p /usr/src/app \
     && mkdir -p /usr/src/app/static
 
-RUN git clone https://github.com/mysql/mysql-connector-python.git
-
 WORKDIR /usr/src/app
 
 ADD requirements.txt /usr/src/app/
