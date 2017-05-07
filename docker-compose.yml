@@ -1,0 +1,31 @@
+version: '2'
+services:
+  web:
+    restart: always
+    build: .
+    expose:
+      - "8000"
+    links:
+      - database:database
+    volumes:
+      - ./:/usr/src/app
+      - ./static/:/usr/src/app/static
+  nginx:
+    restart: always
+    image: nginx:1.10.3
+    build:
+      context: ./nginx
+    volumes:
+      - "./nginx/:/etc/nginx/"
+    ports:
+      - "80:80"
+  database:
+    image: mysql:5.7.17
+    container_name: 'mysql'
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: python
+      MYSQL_PASSWORD: python
+      MYSQL_DATABASE: sample
