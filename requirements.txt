@@ -1,5 +1,0 @@
-Django==1.11
-gunicorn==19.6.0
-mysql-connector-python-rf==2.0.4
-mysqlclient
-PyMySQL
