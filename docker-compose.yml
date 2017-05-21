@@ -10,14 +10,16 @@ services:
     volumes:
       - ./:/usr/src/app
       - ./static/:/usr/src/app/static
-    command: ./manage.py runserver 127.0.0.1:8000
+    command: gunicorn core.wsgi -b 127.0.0.1:9000
   nginx:
     restart: always
     image: nginx:1.10.3
-    build:
-      context: ./nginx
+    build: ./nginx
     ports:
       - "80:80"
+    volumes:
+      - "./nginx/:/etc/nginx/"
+      - /www/static
     volumes_from:
       - web
     links:

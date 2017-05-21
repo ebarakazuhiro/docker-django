@@ -10,12 +10,12 @@ RUN apt-get update && apt-get install -y \
     libgdbm-dev \
     libbz2-dev \
     tk-dev \
-	&& rm -rf /var/lib/apt/lists/*
+  && rm -rf /var/lib/apt/lists/*
 
 ENV PYTHONUNBUFFERED 1
 
 RUN mkdir -p /usr/src/app \
-    && mkdir -p /usr/src/app/static
+  && mkdir -p /usr/src/app/static
 
 ADD requirements.txt /usr/src/app/
 
