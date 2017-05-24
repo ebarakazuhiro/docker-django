@@ -5,6 +5,7 @@ django-redis==3.8.4
 django-ses==0.8.2
 djangorestframework==3.3.2
 gunicorn==19.6.0
+mysqlclient==1.3.10
 PyMySQL==0.7.11
 redis==2.10.5
 requests==2.14.2

@@ -10,16 +10,13 @@ services:
     volumes:
       - ./:/usr/src/app
       - ./static/:/usr/src/app/static
-    command: gunicorn core.wsgi -b 127.0.0.1:9000
+    command: python manage.py runserver 0.0.0.0:8000
   nginx:
     restart: always
     image: nginx:1.10.3
     build: ./nginx
     ports:
       - "80:80"
-    volumes:
-      - "./nginx/:/etc/nginx/"
-      - /www/static
     volumes_from:
       - web
     links:
@@ -27,8 +24,3 @@ services:
   database:
     image: mysql:5.7.17
     container_name: 'mysql'
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_USER: python
-      MYSQL_PASSWORD: python
-      MYSQL_DATABASE: sample
